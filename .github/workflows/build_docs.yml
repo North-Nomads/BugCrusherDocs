@@ -3,10 +3,10 @@ name: Build and Deploy DocFX Docs
 on:
   repository_dispatch:
     types: [build-docs]
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
   push:
     branches:
-      - main  # Also build on direct push to docs repo
+      - main
 
 permissions:
   contents: write
@@ -39,20 +39,21 @@ jobs:
         with:
           path: docs-config
 
-      # Setup .NET (required for DocFX)
+      # Setup .NET
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.x
 
-      # Install DocFX as a .NET tool (THE CORRECT WAY)
+      # Install DocFX
       - name: Install DocFX
         run: dotnet tool update -g docfx
 
       # Build documentation
       - name: Build DocFX site
         run: |
-          docfx docs-config/docfx.json
+          cd docs-config
+          docfx docfx.json
 
       # Upload to GitHub Pages
       - name: Upload artifact

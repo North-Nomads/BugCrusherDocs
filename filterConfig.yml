@@ -1,0 +1,19 @@
+apiRules:
+  # Include your project namespaces (replace with YOUR actual namespaces)
+  - include:
+      uidRegex: ^_Project
+      type: Namespace
+  - include:
+      uidRegex: ^_Project\..*
+      type: Type
+  
+  # Exclude Unity namespaces (we don't want to document Unity's code)
+  - exclude:
+      uidRegex: ^UnityEngine
+      type: Namespace
+  - exclude:
+      uidRegex: ^UnityEditor
+      type: Namespace
+  - exclude:
+      uidRegex: ^System
+      type: Namespace

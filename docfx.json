@@ -3,11 +3,16 @@
     {
       "src": [
         {
-          "files": ["**/*.csproj"],
-          "src": "../source"
+          "files": ["**/*.cs"],
+          "src": "../source/Assets/_Project/Scripts",
+          "exclude": [
+            "**/Editor/**",
+            "**/Tests/**"
+          ]
         }
       ],
       "dest": "api",
+      "filter": "filterConfig.yml",
       "disableGitFeatures": false
     }
   ],
@@ -29,11 +34,15 @@
     "globalMetadata": {
       "_appTitle": "BugCrusher Documentation",
       "_appName": "BugCrusher",
+      "_appFooter": "BugCrusher API Documentation",
       "_enableSearch": true
     },
     "template": ["default", "modern"],
-    "postProcessors": [],
+    "postProcessors": ["ExtractSearchIndex"],
     "keepFileLink": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "xref": [
+      "https://normanderwan.github.io/UnityXrefMaps/2022.3/xrefmap.yml"
+    ]
   }
 }
